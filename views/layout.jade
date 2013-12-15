@@ -10,4 +10,33 @@ html
 		script(src='/js/bootstrap.min.js')
 	body
 		section.container
-			h1 hello
+			header.row
+				section.col-md-4
+					h1#logo
+						span.glyphicon.glyphicon-expand
+				section.col-md-8.align-right
+					section.row
+						section
+							p
+								span.glyphicon.glyphicon-earphone
+								span &nbsp 3344081
+					section.row
+						h3 You'll have an opportunity to get the results when 
+			section.row
+				div#carousel-example-generic.carousel.slide(data-ride="carousel")
+					ol.carousel-indicators
+						li.active(data-target="#carousel-example-generic", data-slide-to="0")
+						li(data-target="#carousel-example-generic", data-slide-to="1")
+						li(data-target="#carousel-example-generic", data-slide-to="2")
+					div.carousel-inner
+						div.item.active
+							img(src="http://placehold.it/1170x550").img-responsive
+						div.item
+							img(src="http://placehold.it/1170x550").img-responsive
+						div.item
+							img(src="http://placehold.it/1170x550").img-responsive
+					section#stuff
+						h4
+							a(href='') HOME
+						h4
+							a(href='') PRODUCTS
