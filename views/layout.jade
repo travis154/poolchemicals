@@ -7,12 +7,13 @@ html
 		link(rel='stylesheet', href='/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/css/app.css')
 		script(src='/js/jquery-2.0.3.min.js')
+		script(src='/js/pre.js')
 		script(src='/js/bootstrap.min.js')
 	body
 		section.container
 			header.row
 				section.col-md-4
-					img(src="/images/1.4.jpg")
+					img(src="/images/1.4.jpg").img-responsive
 				section.col-md-8.align-right
 					section.row
 						section
@@ -21,6 +22,23 @@ html
 								span &nbsp 3344081
 					section.row
 						h3 You'll have an opportunity to get the results when 
+			nav.navbar.navbar-default(role="navigation")#nav-parent
+				div.navbar-header
+					button(type='button',data-toggle="collapse",data-target="#nav").navbar-toggle
+						span.sr-only Toggle Menu
+						span.icon-bar
+						span.icon-bar
+						span.icon-bar
+				div.collapse.navbar-collapse#nav
+					ul.nav.navbar-nav
+						li.active
+							a(href='/') HOME
+						li.active
+							a(href='/') PRODUCTS
+						li.active
+							a(href='/') SERVICES
+						li.active
+							a(href='/') CONTACT US
 			section.row
 				div#carousel-example-generic.carousel.slide(data-ride="carousel")
 					ol.carousel-indicators
@@ -31,9 +49,11 @@ html
 						div.item.active
 							img(src="http://placehold.it/1170x550").img-responsive
 						div.item
-							img(src="http://placehold.it/1170x550").img-responsive
+							img(src="http://placehold.it/1170x550/ffffff/000000&text=sample+text").img-responsive
 						div.item
-							img(src="http://placehold.it/1170x550").img-responsive
+							img(src="http://placehold.it/1170x550/27A8FF/000000&text=blue+is+warm").img-responsive
+						div.item(style='height:500px; width:1170px;background:orange')
+							h3 hello
 					section#stuff
 						h4
 							a(href='') HOME
@@ -43,6 +63,10 @@ html
 							a(href='') SERVICES
 						h4
 							a(href='') CONTACT US
+					section#submenu
+						h4 Minerals
+						h4 Pool Chemical
+						h4 Minerals
 			section.row
 				section.col-md-8
 					h2 Proudly Selling From Trusted Brands Worldwide
