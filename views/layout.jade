@@ -41,19 +41,17 @@ html
 							a(href='/') CONTACT US
 			section.row
 				div#carousel-example-generic.carousel.slide(data-ride="carousel")
-					ol.carousel-indicators
-						li.active(data-target="#carousel-example-generic", data-slide-to="0")
-						li(data-target="#carousel-example-generic", data-slide-to="1")
-						li(data-target="#carousel-example-generic", data-slide-to="2")
+					//	
+						ol.carousel-indicators
+							li.active(data-target="#carousel-example-generic", data-slide-to="0")
+							li(data-target="#carousel-example-generic", data-slide-to="1")
+							li(data-target="#carousel-example-generic", data-slide-to="2")
 					div.carousel-inner
-						div.item.active
-							img(src="http://placehold.it/1170x550").img-responsive
-						div.item
-							img(src="http://placehold.it/1170x550/ffffff/000000&text=sample+text").img-responsive
-						div.item
-							img(src="http://placehold.it/1170x550/27A8FF/000000&text=blue+is+warm").img-responsive
-						div.item(style='height:500px; width:1170px;background:orange')
-							h3 hello
+						-var active = true
+						-each slide, k in home
+							-console.log(k);
+							div(class="item" + (k == 0 ? " active " : ""))
+								img(src="/files/" + slide.slide).img-responsive
 					section#stuff
 						h4
 							a(href='') HOME
