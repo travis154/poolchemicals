@@ -7,8 +7,10 @@ html
 		link(rel='stylesheet', href='/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/css/app.css')
 		script(src='/js/jquery-2.0.3.min.js')
-		script(src='/js/pre.js')
+		script(src='/javascripts/davis.min.js')
 		script(src='/js/bootstrap.min.js')
+		script(src='/js/pre.js')
+		script window.poolchemicals = !{data};
 	body
 		section.container
 			header.row
@@ -34,11 +36,11 @@ html
 						li.active
 							a(href='/') HOME
 						li.active
-							a(href='/') PRODUCTS
+							a(href='/products') PRODUCTS
 						li.active
-							a(href='/') SERVICES
+							a(href='/services') SERVICES
 						li.active
-							a(href='/') CONTACT US
+							a(href='/contact') CONTACT US
 			section.row
 				div#carousel-example-generic.carousel.slide(data-ride="carousel")
 					//	
@@ -54,16 +56,16 @@ html
 								img(src="/files/" + slide.slide).img-responsive
 					section#stuff
 						h4
-							a(href='') HOME
+							a(href='/') HOME
 						h4
-							a(href='') PRODUCTS
+							a(href='/products') PRODUCTS
 						h4
-							a(href='') SERVICES
+							a(href='/services') SERVICES
 						h4
-							a(href='') CONTACT US
+							a(href='/contact') CONTACT US
 					section#submenu
 						h4 Minerals
-						h4 Pool Chemical
+						h4.active Pool Chemical
 						h4 Minerals
 			section.row
 				section.col-md-8

@@ -47,6 +47,34 @@ cms.add('website_home',{
 	}
 });
 
+cms.add('website_products',{
+	fields:{
+		name:{type:"string"},
+		image:{
+			type:'image', 
+			maintain_ratio:false,   
+			crop_width:1170, 
+			crop_height:550, 
+			sizes:[
+				{
+					prefix:"medium", 
+					width:240, 
+					height:180,
+				}, 
+				{
+					prefix:"mediumbig", 
+					width:370, 
+					height:370
+				}
+			]
+		},
+		caption:{
+			type:'string',
+			multi:true
+		}
+	}
+});
+
 
 var app = express();
 
@@ -57,6 +85,7 @@ app.set('view engine', 'jade');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.compress());
+app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.cookieParser("herro"));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -88,11 +117,19 @@ app.get('/', function(req, res){
 			.find()
 			.lean()
 			.exec(fn);
+		},
+		products:function(fn){
+			cms
+			.website_products
+			.find()
+			.lean()
+			.exec(fn);			
 		}
 	}, 
 	function(err, page){
 		if(err) throw err;
-		console.log(page);
+		var data = JSON.stringify(page);
+		page.data = data;
 		res.render('layout', page);
 	});	
 

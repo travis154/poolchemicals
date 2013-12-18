@@ -1,3 +1,8 @@
+trans(arg)
+	transition arg
+	-webkit-transition arg
+	-moz-transition arg
+	-o-transition arg
 *
 	//font-family "Open Sans" !important
 .mark
@@ -33,7 +38,8 @@
 	left 20%
 	top 0
 	h4
-		background rgb(0, 224, 255)
+		cursor pointer
+		background rgba(0, 0, 0, 0.13)
 		font-family "Open Sans"
 		color white
 		text-decoration none
@@ -41,5 +47,11 @@
 		padding: 10px 15px;
 		display: inline-block;
 		margin-right: 19px;
+		trans(background .3s linear)
 		&:hover
-			font-weight 800
+			background rgba(0, 0, 0, 0.6)
+	.active
+		background rgb(0, 224, 255)
+			
+.current-url
+	font-weight 600 !important
