@@ -9,6 +9,7 @@ html
 		script(src='/js/jquery-2.0.3.min.js')
 		script(src='/javascripts/davis.min.js')
 		script(src='/js/bootstrap.min.js')
+		script(src='/templates.js')
 		script(src='/js/pre.js')
 		script window.poolchemicals = !{data};
 	body
@@ -48,7 +49,7 @@ html
 							li.active(data-target="#carousel-example-generic", data-slide-to="0")
 							li(data-target="#carousel-example-generic", data-slide-to="1")
 							li(data-target="#carousel-example-generic", data-slide-to="2")
-					div.carousel-inner
+					div.carousel-inner#content
 						-var active = true
 						-each slide, k in home
 							-console.log(k);
@@ -64,9 +65,7 @@ html
 						h4
 							a(href='/contact') CONTACT US
 					section#submenu
-						h4 Minerals
-						h4.active Pool Chemical
-						h4 Minerals
+
 			section.row
 				section.col-md-8
 					h2 Proudly Selling From Trusted Brands Worldwide

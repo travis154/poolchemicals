@@ -10,6 +10,7 @@ $(function(){
 		this.get('/services', function (req) {
 			$(".current-url").removeClass("current-url");
 			$("a[href='/services']").addClass("current-url");
+			render("services");
 		});
 		this.get('/contact', function (req) {
 			$(".current-url").removeClass("current-url");
@@ -42,11 +43,30 @@ $(function(){
 			//app.trans();
 		});
 	})
-	app.start();
+	$("body").on("click", "#submenu h4", function(){
+		var self = $(this);
+		$("#submenu h4").removeClass("active");
+		self.addClass("active");
+		console.log(self);
+	});
 });
 
 function render(menu){
 	var select = poolchemicals[menu];
+	$("#submenu").html("");
+	var empty = $("<div />");
+	select.forEach(function(e, index){
+		$("#submenu").append("<h4 data-type='"+menu+"' data-id='"+e._id+"'>"+e.name+"</h4>");
+		//add to carousel
+		var active = index == 0;
+		var html = jade.render(menu, e);
+		var el = $(html);
+		if(active){
+			el.addClass("active");
+		}
+		empty.append(el);
+	});
+	$("#content").html(empty.html());
 }
 
 function init(){

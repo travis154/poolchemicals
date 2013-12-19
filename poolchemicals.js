@@ -75,6 +75,34 @@ cms.add('website_products',{
 	}
 });
 
+cms.add('website_services',{
+	fields:{
+		name:{type:"string"},
+		image:{
+			type:'image', 
+			maintain_ratio:false,   
+			crop_width:1170, 
+			crop_height:550, 
+			sizes:[
+				{
+					prefix:"medium", 
+					width:240, 
+					height:180,
+				}, 
+				{
+					prefix:"mediumbig", 
+					width:370, 
+					height:370
+				}
+			]
+		},
+		caption:{
+			type:'string',
+			multi:true
+		}
+	}
+});
+
 
 var app = express();
 
@@ -121,6 +149,13 @@ app.get('/', function(req, res){
 		products:function(fn){
 			cms
 			.website_products
+			.find()
+			.lean()
+			.exec(fn);			
+		},
+		services:function(fn){
+			cms
+			.website_services
 			.find()
 			.lean()
 			.exec(fn);			
