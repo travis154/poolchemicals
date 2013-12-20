@@ -1,3 +1,21 @@
+//preload images
+var load = html5Preloader();
+
+for(var i in poolchemicals){
+	var e = poolchemicals[i];
+	e.forEach(function(item){
+		
+		if(item.slide){
+			load.addFiles("/files/" + item.slide);
+			console.log('here');
+		}
+		if(item.image){
+			load.addFiles("/files/" + item.image);
+			console.log('heres');
+		}
+	});
+}
+
 $(function(){
 	init();
 	$(window).on('resize', init);
