@@ -22,8 +22,9 @@ html
 					section.row
 						section
 							p
-								span.glyphicon.glyphicon-earphone
-								span &nbsp 3344081
+								span
+									span.glyphicon.glyphicon-earphone
+									span &nbsp 3344081
 					section.row.hide
 						h3 You'll have an opportunity to get the results when 
 			nav.navbar.navbar-default(role="navigation")#nav-parent
@@ -49,17 +50,9 @@ html
 			section.row
 				section.col-md-8
 					h2 Proudly Selling From Trusted Brands Worldwide
-					section.row
-						section.col-xs-3
-							img(src="http://placehold.it/150x100").img-responsive
-						section.col-xs-3
-							img(src="http://placehold.it/150x100").img-responsive
-						section.col-xs-3
-							img(src="http://placehold.it/150x100").img-responsive
-						section.col-xs-3
-							img(src="http://placehold.it/150x100").img-responsive
-						section.col-xs-3
-							img(src="http://placehold.it/150x100").img-responsive
+					section.row#brands
+						-each brand in brands
+							img(src="/files/medium"+brand.image).img-responsive
 				section.col-md-4
 					h3 Get updates from us
 					section
@@ -69,3 +62,6 @@ html
 								p.note We will not spam you, our newsletters are sent less frequently
 							section.col-md-4
 								button(type="button").btn.btn-info.btn-block Subscribe
+							section.col-md-8.social
+								a(href='').btn.btn-info t
+								a(href='').btn.btn-info f						

@@ -23,6 +23,22 @@ cms.add('website_administration',{
 		logo:{type:'image', maintain_ratio:false,  crop_height:150, crop_width:240, sizes:[{prefix:"medium", width:240, height:180,}, {prefix:"mediumbig", width:370, height:370}]}		
 	}
 });
+cms.add('website_brands',{
+	fields:{
+		name:{type:"string"},
+		image:{
+			type:'image', 
+			maintain_ratio:true,   
+			crop_height:90,
+			sizes:[
+				{
+					prefix:"medium", 
+					height:90
+				}
+			]
+		}		
+	}
+});
 cms.add('website_home',{
 	fields:{
 		name:{type:"string"},
@@ -152,6 +168,13 @@ app.get('/contact', function(req, res){
 
 function generate(req, res, route){
 	async.auto({
+		brands:function(fn){
+			cms
+			.website_brands
+			.find()
+			.lean()
+			.exec(fn);
+		},
 		home:function(fn){
 			cms
 			.website_home
