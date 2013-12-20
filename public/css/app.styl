@@ -48,6 +48,7 @@ trans(arg)
 		display: inline-block;
 		margin-right: 19px;
 		trans(background .3s linear)
+		font-size 14px
 		&:hover
 			background rgba(0, 0, 0, 0.6)
 	.active
@@ -55,3 +56,11 @@ trans(arg)
 			
 .current-url
 	font-weight 600 !important
+.carousel-caption
+	background rgba(0, 0, 0, .5)
+	h1
+		color rgb(0, 224, 255)
+@media (max-width: 450px)
+	.carousel-caption
+		p
+			display none

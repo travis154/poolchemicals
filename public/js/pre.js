@@ -65,7 +65,8 @@ $(function(){
 		var self = $(this);
 		$("#submenu h4").removeClass("active");
 		self.addClass("active");
-		console.log(self);
+		var index = self.data().index;
+		$("#carousel").carousel(parseInt(index));
 	});
 });
 
@@ -74,7 +75,7 @@ function render(menu){
 	$("#submenu").html("");
 	var empty = $("<div />");
 	select.forEach(function(e, index){
-		$("#submenu").append("<h4 data-type='"+menu+"' data-id='"+e._id+"'>"+e.name+"</h4>");
+		$("#submenu").append("<h4 data-index='"+index+"' data-type='"+menu+"' data-id='"+e._id+"'>"+e.name+"</h4>");
 		//add to carousel
 		var active = index == 0;
 		var html = jade.render(menu, e);

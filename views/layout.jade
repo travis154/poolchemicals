@@ -24,7 +24,7 @@ html
 							p
 								span.glyphicon.glyphicon-earphone
 								span &nbsp 3344081
-					section.row
+					section.row.hide
 						h3 You'll have an opportunity to get the results when 
 			nav.navbar.navbar-default(role="navigation")#nav-parent
 				div.navbar-header
@@ -44,18 +44,14 @@ html
 						li.active
 							a(href='/contact') CONTACT US
 			section.row
-				div#carousel-example-generic.carousel.slide(data-ride="carousel")
-					//	
-						ol.carousel-indicators
-							li.active(data-target="#carousel-example-generic", data-slide-to="0")
-							li(data-target="#carousel-example-generic", data-slide-to="1")
-							li(data-target="#carousel-example-generic", data-slide-to="2")
+				div#carousel.carousel.slide(data-ride="carousel")
 					div.carousel-inner#content
 						-var active = true
 						-each slide, k in home
 							-console.log(k);
 							div(class="item" + (k == 0 ? " active " : ""))
 								img(src="/files/" + slide.slide).img-responsive
+									
 					section#stuff
 						h4
 							a(href='/') HOME
