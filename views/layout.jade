@@ -51,16 +51,20 @@ html
 							-console.log(k);
 							div(class="item" + (k == 0 ? " active " : ""))
 								img(src="/files/" + slide.slide).img-responsive
+					a.left.carousel-control(href="#carousel", data-slide="prev")
+						span.glyphicon.glyphicon-chevron-left
+					a.right.carousel-control(href="#carousel", data-slide="next")
+						span.glyphicon.glyphicon-chevron-right
 									
 					section#stuff
 						h4
-							a(href='/') HOME
+							a(href='/', class=(selected == "home" ? "current-url" : "")) HOME
 						h4
-							a(href='/products') PRODUCTS
+							a(href='/products', class=(selected == "products" ? "current-url" : "")) PRODUCTS
 						h4
-							a(href='/services') SERVICES
+							a(href='/services', class=(selected == "services" ? "current-url" : "")) SERVICES
 						h4
-							a(href='/contact') CONTACT US
+							a(href='/contact', class=(selected == "contact" ? "current-url" : "")) CONTACT US
 					section#submenu
 
 			section.row
