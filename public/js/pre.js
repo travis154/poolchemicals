@@ -20,6 +20,11 @@ $(function(){
 	init();
 	$(window).on('resize', init);
 	var app = Davis(function () {
+		this.get('/', function (req) {
+			$(".current-url").removeClass("current-url");
+			$("a[href='/']").addClass("current-url");
+			render("home");
+		});
 		this.get('/products', function (req) {
 			$(".current-url").removeClass("current-url");
 			$("a[href='/products']").addClass("current-url");
@@ -72,6 +77,10 @@ $(function(){
 
 function render(menu){
 	var select = poolchemicals[menu];
+	var obj = {selected_data:select, selected:menu};
+	var html = (jade.render("carousel", obj));
+	$("#carousel").html(html);
+	return;
 	$("#submenu").html("");
 	var empty = $("<div />");
 	select.forEach(function(e, index){

@@ -26,7 +26,7 @@ cms.add('website_administration',{
 cms.add('website_home',{
 	fields:{
 		name:{type:"string"},
-		slide:{
+		image:{
 			type:'image', 
 			maintain_ratio:false,   
 			crop_width:1170, 
@@ -180,6 +180,7 @@ function generate(req, res, route){
 		page.data = data;
 		page[route].selected = true;
 		page.selected = route;
+		page.selected_data = page[route];
 		res.render('layout', page);
 	});	
 
