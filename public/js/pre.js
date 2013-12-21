@@ -3,6 +3,7 @@ var load = html5Preloader();
 
 for(var i in poolchemicals){
 	var e = poolchemicals[i];
+	if(!e.length) continue;
 	e.forEach(function(item){
 		
 		if(item.slide){

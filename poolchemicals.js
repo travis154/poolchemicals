@@ -20,7 +20,11 @@ cms.add('website_administration',{
 	single:true,
 	fields:{
 		google_analytics:{type:'string', multi:true},
-		logo:{type:'image', maintain_ratio:false,  crop_height:150, crop_width:240, sizes:[{prefix:"medium", width:240, height:180,}, {prefix:"mediumbig", width:370, height:370}]}		
+		mobile:{type:'string'},
+		phone:{type:'string'},
+		fax:{type:'string'},
+		twitter:{type:'string'},
+		facebook:{type:'string'}
 	}
 });
 cms.add('website_brands',{
@@ -168,6 +172,15 @@ app.get('/contact', function(req, res){
 
 function generate(req, res, route){
 	async.auto({
+		administration:function(fn){
+			cms
+			.website_administration
+			.findOne()
+			.lean()
+			.exec(function(err, doc){
+				fn(null, doc || {});
+			});
+		},
 		brands:function(fn){
 			cms
 			.website_brands
