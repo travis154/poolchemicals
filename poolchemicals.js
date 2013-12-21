@@ -201,9 +201,11 @@ function generate(req, res, route){
 		if(err) throw err;
 		var data = JSON.stringify(page);
 		page.data = data;
-		page[route].selected = true;
+		if(page[route]){
+			page[route].selected = true;
+			page.selected_data = page[route];
+		}
 		page.selected = route;
-		page.selected_data = page[route];
 		res.render('layout', page);
 	});	
 

@@ -1,6 +1,9 @@
 div.carousel-inner#content
-	-each slide, k in selected_data
-		include products
+	-if(selected == "contact")
+		include contact
+	-else
+		-each slide, k in selected_data
+			include products
 //
 	a.left.carousel-control(href="#carousel", data-slide="prev")
 		span.glyphicon.glyphicon-chevron-left
@@ -17,5 +20,6 @@ section#stuff
 	h4
 		a(href='/contact', class=(selected == "contact" ? "current-url" : "")) CONTACT US
 section#submenu
-	-each slide, index in selected_data
-		h4(data-index=index, data-type=selected, data-id=slide._id)=slide.name
+	-if(selected != "contact")
+		-each slide, index in selected_data
+			h4(data-index=index, data-type=selected, data-id=slide._id)=slide.name

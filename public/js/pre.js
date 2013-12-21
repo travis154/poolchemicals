@@ -38,6 +38,7 @@ $(function(){
 		this.get('/contact', function (req) {
 			$(".current-url").removeClass("current-url");
 			$("a[href='/contact']").addClass("current-url");
+			renderView("contact");
 		});
 		this.get('/packages/', function (req) {
 			$("#package-modal").modal('hide');
@@ -80,21 +81,12 @@ function render(menu){
 	var obj = {selected_data:select, selected:menu};
 	var html = (jade.render("carousel", obj));
 	$("#carousel").html(html);
-	return;
+}
+
+function renderView(view){
+	var html = jade.render(view);
 	$("#submenu").html("");
-	var empty = $("<div />");
-	select.forEach(function(e, index){
-		$("#submenu").append("<h4 data-index='"+index+"' data-type='"+menu+"' data-id='"+e._id+"'>"+e.name+"</h4>");
-		//add to carousel
-		var active = index == 0;
-		var html = jade.render(menu, e);
-		var el = $(html);
-		if(active){
-			el.addClass("active");
-		}
-		empty.append(el);
-	});
-	$("#content").html(empty.html());
+	$("#content").html(html);
 }
 
 function init(){
