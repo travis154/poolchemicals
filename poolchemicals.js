@@ -122,6 +122,12 @@ cms.add('website_services',{
 		}
 	}
 });
+cms.add('subscription_list',{
+	single:true,
+	fields:{
+		name:{type:"table"}	
+	}
+});
 
 
 var app = express();
