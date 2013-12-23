@@ -124,11 +124,29 @@ cms.add('website_services',{
 });
 cms.add('subscription_list',{
 	single:true,
+	readonly:true,
 	fields:{
-		name:{type:"table"}	
+		name:{
+			type:"table",
+			readonly:true,
+			columns:1,
+			rows:1			
+		}
 	}
 });
-
+cms.run(function(){
+	//setup pre requisites
+	cms
+	.subscription_list
+	.findOne({},function(err, doc){
+		if (err) throw err;
+		if(!doc){
+			new cms
+			.subscription_list({name:{rows:[], columns:["Emails"]}})
+			.save(console.log);	
+		}
+	});
+});
 
 var app = express();
 
@@ -174,6 +192,18 @@ app.get('/services', function(req, res){
 });
 app.get('/contact', function(req, res){
 	generate(req,res,'contact');
+});
+app.post('/subscribe', function(req, res){
+	var email = req.body.email;
+	if(email == ""){
+		return res.json({error: "Invalid email"});
+	}
+	cms
+	.subscription_list
+	.update({},{$push:{'name.rows':[email]}},function(err, mail){
+		if(err) throw err;
+		res.json({message:"Subscribed"});
+	});
 });
 
 function generate(req, res, route){
@@ -229,6 +259,8 @@ function generate(req, res, route){
 	});	
 
 }
+
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

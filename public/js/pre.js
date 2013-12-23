@@ -75,6 +75,18 @@ $(function(){
 		var index = self.data().index;
 		$("#carousel").carousel(parseInt(index));
 	});
+	$("#subscribe").on("click", function(){
+		var email = $("#subscribe-email").val();
+		if(email == "" || !email){
+			return alert("No email provided");
+		}
+		$.post("/subscribe",{email:email}, function(res){
+			if(res.error){
+				return alert(res.error);
+			}
+			$("#subscription-message").removeClass("hide").fadeIn();
+		});
+	});
 });
 
 function render(menu){

@@ -354,6 +354,10 @@ var cms = {
 	addComponent:function addComponent(template, options, schema, data, components, statics){
 		var html = cms.renderComponent(template, options, schema, data, components);
 		html = $(html);
+		if(statics.readonly){
+			html.find(".form-actions").remove();
+		}
+		
 		if(statics && statics.view && statics.view.type == 'block'){
 			html.hide();
 			var attrs = [
@@ -437,7 +441,7 @@ var cms = {
 					"<div class='btn-group'><button class='btn cms-table-row-add' type='button'>+ Row</button><button class='btn cms-table-row-remove' type='button'>- Row</button></div>"
 				].join("");
 				var btns = $(_btns);
-				var table = '<table><thead><tr></tr></head><tbody></tbody></table>';
+				var table = '<table data-schema="'+encodeURIComponent(JSON.stringify(schema))+'"><thead><tr></tr></head><tbody></tbody></table>';
 				table = $(table);
 				table.addClass("table");
 				table.addClass("table-bordered");
@@ -445,21 +449,23 @@ var cms = {
 					var headers = table.find("thead tr");
 					var rows = table.find("tbody");
 					var column_count = data.columns.length;
-
+					var editable = schema.readonly == true ? "false" : "true";
 					//append columns
 					_.each(data.columns, function(column){
-						headers.append("<th contenteditable='true'>"+column+"</th>");
+						headers.append("<th contenteditable='"+editable+"'>"+column+"</th>");
 					});
 					
 					//append rows
 					_.each(data.rows, function(row){
 						var r = _.map(row, function(cell){
-							return "<td contenteditable='true'>"+cell+"</td>";
+							return "<td contenteditable='"+editable+"'>"+cell+"</td>";
 						}).join('');
 						rows.append("<tr>"+r+"</tr>");
 					});
 				}
-				dom.append(btns);
+				if(schema.readonly == false || !schema.readonly){
+					dom.append(btns);
+				}
 				dom.append(table);
 				
 				break;
