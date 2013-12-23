@@ -354,7 +354,7 @@ var cms = {
 	addComponent:function addComponent(template, options, schema, data, components, statics){
 		var html = cms.renderComponent(template, options, schema, data, components);
 		html = $(html);
-		if(statics.readonly){
+		if(statics && statics.readonly){
 			html.find(".form-actions").remove();
 		}
 		
