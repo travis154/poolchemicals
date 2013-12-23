@@ -87,9 +87,13 @@ $(function(){
 			$("#subscription-message").removeClass("hide").fadeIn();
 		});
 	});
+	$("body").on("click", ".contact-menu", function(){
+		$("#quickcontact").addClass("active");
+	});
 });
 
 function render(menu){
+	$("#quickcontact").removeClass("active");
 	var select = poolchemicals[menu];
 	var obj = {selected_data:select, selected:menu};
 	var html = (jade.render("carousel", obj));

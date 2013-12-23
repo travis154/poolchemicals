@@ -21,10 +21,13 @@ html
 				section.col-md-8.align-right
 					section.row
 						section
-							p
+							p#quickcontact
 								span
 									span.glyphicon.glyphicon-earphone
-									span &nbsp 3344081
+									span &nbsp +960 3301811
+								span
+									span.glyphicon.glyphicon-pencil
+									span &nbsp sales@poolservice.com.mv
 					section.row.hide
 						h3 You'll have an opportunity to get the results when 
 			nav.navbar.navbar-default(role="navigation")#nav-parent
@@ -43,13 +46,13 @@ html
 						li.active
 							a(href='/services') SERVICES
 						li.active
-							a(href='/contact') CONTACT US
+							a(href='/contact').contact-menu CONTACT US
 			section.row
 				div#carousel.carousel.slide(data-ride="carousel")
 					include components/carousel
 			section.row
 				section.col-md-8
-					h2 Proudly Selling From Trusted Brands Worldwide
+					h2 We Sell Trusted Brands From Worldwide
 					section.row#brands
 						-each brand in brands
 							img(src="/files/medium"+brand.image).img-responsive
