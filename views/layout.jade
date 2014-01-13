@@ -15,13 +15,15 @@ html
 		script(src='/js/pre.js')
 	body
 		section.container
+			img(src="/images/background.png")#background-img
+			img(src="/images/2.0.png").img-responsive.logo-img
+		section.container(style='margin-top: 60px;')
 			header.row
 				section.col-md-4
-					img(src="/images/1.4.jpg").img-responsive
 				section.col-md-8.align-right
 					section.row
 						section
-							p#quickcontact
+							p#quickcontact.white
 								span
 									span.glyphicon.glyphicon-earphone
 									span &nbsp +960 3301811
@@ -52,12 +54,12 @@ html
 					include components/carousel
 			section.row
 				section.col-md-8
-					h2 We Sell Trusted Brands From Worldwide
+					h2.white We Sell Trusted Brands From Worldwide
 					section.row#brands
 						-each brand in brands
 							img(src="/files/medium"+brand.image).img-responsive
 				section.col-md-4
-					h3 Get updates from us
+					h3.white Get updates from us
 					section
 						input(type="text", placeholder="your email").form-control#subscribe-email
 						h3(style='font-family:"Open sans"; font-weight:200;')#subscription-message.hide Subscription completed.
@@ -66,7 +68,7 @@ html
 								p.note We will not spam you, our newsletters are sent less frequently
 							section.col-md-4
 								button(type="button").btn.btn-info.btn-block#subscribe Subscribe
-							section.col-md-8.social
+							section.col-md-8.social.white
 								span find us on 
 								a(href='https://twitter.com/' + (administration.twitter || "")) twitter
 								span &nbsp;and&nbsp;
