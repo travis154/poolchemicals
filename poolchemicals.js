@@ -19,12 +19,19 @@ var cms = require('./lib/cms');
 cms.add('website_administration',{
 	single:true,
 	fields:{
-		google_analytics:{type:'string', multi:true},
+		about:{type:'string', multi:true, rtl:true},
+		image:{
+			type:'image', 
+			maintain_ratio:true,   
+			crop_width:455,
+			crop_height:415
+		},		
 		mobile:{type:'string'},
 		phone:{type:'string'},
 		fax:{type:'string'},
 		twitter:{type:'string'},
-		facebook:{type:'string'}
+		facebook:{type:'string'},
+		google_analytics:{type:'string', multi:true}
 	}
 });
 cms.add('website_brands',{
@@ -192,6 +199,12 @@ app.get('/services', function(req, res){
 });
 app.get('/contact', function(req, res){
 	generate(req,res,'contact');
+});
+app.post('/contact', function(req, res){
+	res.end();
+});
+app.get('/about', function(req, res){
+	generate(req,res,'about');
 });
 app.post('/subscribe', function(req, res){
 	var email = req.body.email;

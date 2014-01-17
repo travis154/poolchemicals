@@ -1,6 +1,8 @@
 div.carousel-inner#content
 	-if(selected == "contact")
 		include contact
+	-else if(selected == "about")
+		include about
 	-else
 		-each slide, k in selected_data
 			include products
@@ -19,7 +21,9 @@ section#stuff
 		a(href='/services', class=(selected == "services" ? "current-url" : "")) SERVICES
 	h4
 		a(href='/contact', class=(selected == "contact" ? "current-url" : "")).contact-menu CONTACT US
+	h4
+		a(href='/about', class=(selected == "about" ? "current-url" : "")) ABOUT US
 section#submenu
-	-if(selected != "contact")
+	-if(selected.match(/contact|about/) == null)
 		-each slide, index in selected_data
 			h4(data-index=index, data-type=selected, data-id=slide._id)=slide.name

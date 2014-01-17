@@ -90,8 +90,23 @@ $(function(){
 	$("body").on("click", ".contact-menu", function(){
 		$("#quickcontact").addClass("active");
 	});
+	$("#new-message-form").on('submit', function(e){
+        e.preventDefault();
+        var form = $(this);
+        if(form.parsley('isValid')){
+        	var data = form.serializeArray();
+            var obj = {};
+            data.forEach(function(e){
+				obj[e.name] = e.value;
+            });
+			var url = "/contact";
+			$.post(url, data, function(res){
+				form.remove();
+				$("#contact-status").text('Thank you for contacting us, we will get back to you shortly.');
+			});
+        }
+	});
 });
-
 function render(menu){
 	$("#quickcontact").removeClass("active");
 	var select = poolchemicals[menu];

@@ -10,6 +10,7 @@ html
 		script(src='/js/html5Preloader.js')
 		script(src='/javascripts/davis.min.js')
 		script(src='/js/bootstrap.min.js')
+		script(src='/js/parsley.js')
 		script(src='/templates.js')
 		script window.poolchemicals = !{data};
 		script(src='/js/pre.js')
@@ -41,15 +42,18 @@ html
 						span.icon-bar
 				div.collapse.navbar-collapse#nav
 					ul.nav.navbar-nav
-						li.active
+						li
 							a(href='/') HOME
-						li.active
+						li
 							a(href='/products') PRODUCTS
-						li.active
+						li
 							a(href='/services') SERVICES
-						li.active
+						li
 							a(href='/contact').contact-menu CONTACT US
+						li
+							a(href='/about') ABOUT US
 			section.row
+				div#glow
 				div#carousel.carousel.slide(data-ride="carousel")
 					include components/carousel
 			section.row
@@ -70,6 +74,8 @@ html
 								button(type="button").btn.btn-info.btn-block#subscribe Subscribe
 							section.col-md-8.social.white
 								span find us on 
-								a(href='https://twitter.com/' + (administration.twitter || "")) twitter
+								a(href='https://twitter.com/' + (administration.twitter || ""))
+									img(src="/images/twitter.png")
 								span &nbsp;and&nbsp;
-								a(href='https://facebook.com/' + (administration.facebook || "")) facebook				
+								a(href='https://facebook.com/' + (administration.facebook || ""))
+									img(src="/images/facebook.png")				
