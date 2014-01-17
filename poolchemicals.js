@@ -197,6 +197,9 @@ app.get('/', function(req, res){
 		generate(req,res,'home');
 	}
 });
+app.get('/home', function(req, res){
+	generate(req,res,'home');
+});
 app.get('/products', function(req, res){
 	generate(req,res,'products');
 });
