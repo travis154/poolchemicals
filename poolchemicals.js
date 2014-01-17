@@ -1,4 +1,6 @@
 
+var WEBSITE_LIVE = false;
+
 /**
  * Module dependencies.
  */
@@ -189,7 +191,11 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function(req, res){
-	generate(req,res,'home');
+	if(WEBSITE_LIVE == false){
+		res.render('comingsoon');
+	}else{
+		generate(req,res,'home');
+	}
 });
 app.get('/products', function(req, res){
 	generate(req,res,'products');
